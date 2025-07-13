@@ -110,10 +110,14 @@ function App() {
         <button type="submit">Calculate</button>
 
         {/* Final Balance */}
-        {finalBalance && (
+        {typeof finalBalance === "number" ? (
+          <>
+            <p>Final Balance: ${finalBalance}</p>
+          </>
+        ) : (
           <>
             <hr />
-            <p>Final Balance: ${finalBalance}</p>
+            {finalBalance}
           </>
         )}
       </form>

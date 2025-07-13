@@ -4,6 +4,31 @@ export const calculateFinalBalance = (
   depositPeriod,
   interestPaymentFrequency
 ) => {
+  // Validation
+  if (!initialDeposit || initialDeposit < 1000 || initialDeposit > 1500000) {
+    return "Invalid input for Initial Deposit Amount";
+  }
+
+  if (!interestRate || interestRate < 0 || interestRate > 15) {
+    return "Invalid input for Interest Rate";
+  }
+
+  if (!depositPeriod || depositPeriod < 3 || depositPeriod > 60) {
+    return "Invalid input for Term Deposit Period";
+  }
+
+  if (
+    !interestPaymentFrequency ||
+    !(
+      interestPaymentFrequency === "monthly" ||
+      interestPaymentFrequency === "quarterly" ||
+      interestPaymentFrequency === "annually" ||
+      interestPaymentFrequency === "at maturity"
+    )
+  ) {
+    return "Invalid input for Interest Payment Frequency";
+  }
+
   // Compound interest formula: A = P(1+r/n) ^ (nt)
   // where
   // A: final balance (principal + accrued interest)
@@ -18,8 +43,6 @@ export const calculateFinalBalance = (
   // P: initial deposit amount
   // r: annual interest rate as a decimal
   // t: time period in years
-
-  // TODO: add some basic validation
 
   const timePeriodInYears = depositPeriod / 12.0;
 
