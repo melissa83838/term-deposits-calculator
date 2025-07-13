@@ -9,4 +9,5 @@ export default defineConfig({
     globals: true,
     setupFiles: "./src/tests/setup.js",
   },
+  base: "/term-deposits-calculator/",
 });
