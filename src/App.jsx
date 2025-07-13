@@ -112,6 +112,7 @@ function App() {
         {/* Final Balance */}
         {typeof finalBalance === "number" ? (
           <>
+            <hr />
             <p>Final Balance: ${finalBalance}</p>
           </>
         ) : (
