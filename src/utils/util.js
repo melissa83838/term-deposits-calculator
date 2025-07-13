@@ -30,23 +30,23 @@ export const calculateFinalBalance = (
     interestPaymentFrequency === "annually"
   ) {
     // Use compound interest formula
-    let compoundsPerPeriod;
+    let compoundsPerYear;
     switch (interestPaymentFrequency) {
       case "monthly":
-        compoundsPerPeriod = depositPeriod;
+        compoundsPerYear = 12;
         break;
       case "quarterly":
-        compoundsPerPeriod = depositPeriod / 4.0;
+        compoundsPerYear = 4;
         break;
       case "annually":
-        compoundsPerPeriod = depositPeriod / 12.0;
+        compoundsPerYear = 1;
         break;
     }
 
     finalBalance =
       initialDeposit *
-      (1 + interestRate / 100 / compoundsPerPeriod) **
-        (compoundsPerPeriod * timePeriodInYears);
+      (1 + interestRate / 100 / compoundsPerYear) **
+        (compoundsPerYear * timePeriodInYears);
   }
 
   if (interestPaymentFrequency === "at maturity") {
@@ -55,5 +55,5 @@ export const calculateFinalBalance = (
       initialDeposit * (1 + (interestRate / 100) * timePeriodInYears);
   }
 
-  return Math.floor(finalBalance);
+  return Math.round(finalBalance);
 };
