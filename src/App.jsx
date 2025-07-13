@@ -1,19 +1,24 @@
 import { useState } from "react";
+import { calculateFinalBalance } from "./utils/util";
 
 function App() {
   const [initialDeposit, setInitialDeposit] = useState();
   const [interestRate, setInterestRate] = useState();
   const [depositPeriod, setDepositPeriod] = useState();
-  const [interestPaymentFrequency, setInterestPaymentFrequency] = useState();
+  const [interestPaymentFrequency, setInterestPaymentFrequency] =
+    useState("monthly");
   const [finalBalance, setFinalBalance] = useState();
 
-  const calculateFinalBalance = () => {
-    console.log(
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const balance = calculateFinalBalance(
       initialDeposit,
       interestRate,
       depositPeriod,
       interestPaymentFrequency
     );
+
+    setFinalBalance(balance);
   };
 
   return (
@@ -24,7 +29,7 @@ function App() {
         by inputting your initial deposit amount ($), interest rate (%), deposit
         period (month) and interest payment frequency.
       </p>
-      <form action={calculateFinalBalance}>
+      <form onSubmit={handleSubmit}>
         {/* Initial deposit amount */}
         <label>
           Initial Deposit Amount ($):
@@ -86,7 +91,7 @@ function App() {
         <br />
 
         {/* Button to calculate final balance */}
-        <input type="submit" value="Calculate" />
+        <button type="submit">Calculate</button>
 
         {/* Final Balance */}
         {finalBalance && (
