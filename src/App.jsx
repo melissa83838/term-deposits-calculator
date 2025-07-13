@@ -31,9 +31,9 @@ function App() {
       </p>
       <p>Valid range for inputs: </p>
       <ul>
-        <li>Initial deposit amount: $1000 and $1,500,000</li>
-        <li>Interest rate: 0% and 15%</li>
-        <li>Term deposit period: 3 to 60 months</li>
+        <li>Initial deposit amount: $1000 to $1,500,000 (whole number)</li>
+        <li>Interest rate: 0% to 15% (decimal to two places)</li>
+        <li>Term deposit period: 3 to 60 months (whole number)</li>
       </ul>
       <form onSubmit={handleSubmit}>
         {/* Initial deposit amount */}
