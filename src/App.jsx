@@ -29,12 +29,21 @@ function App() {
         by inputting your initial deposit amount ($), interest rate (%), deposit
         period (month) and interest payment frequency.
       </p>
+      <p>Valid range for inputs: </p>
+      <ul>
+        <li>Initial deposit amount: $0 and $1,500,000</li>
+        <li>Interest rate: 0% and 15%</li>
+        <li>Term deposit period: 0 to 60 months</li>
+      </ul>
       <form onSubmit={handleSubmit}>
         {/* Initial deposit amount */}
         <label>
           Initial Deposit Amount ($):
           <input
+            required
             type="number"
+            min="1000"
+            max="1500000"
             value={initialDeposit}
             onChange={(e) => {
               setInitialDeposit(e.target.value);
@@ -48,7 +57,11 @@ function App() {
         <label>
           Interest Rate (%):
           <input
+            required
             type="number"
+            min="0"
+            max="15"
+            step="0.01"
             value={interestRate}
             onChange={(e) => {
               setInterestRate(e.target.value);
@@ -62,7 +75,10 @@ function App() {
         <label>
           Term Deposit Period (month):
           <input
+            required
             type="number"
+            min="3"
+            max="60"
             value={depositPeriod}
             onChange={(e) => {
               setDepositPeriod(e.target.value);
