@@ -34,7 +34,7 @@ export const calculateFinalBalance = (
   // A: final balance (principal + accrued interest)
   // P: initial deposit amount
   // r: annual interest rate as a decimal
-  // n: number of times the interest is compounded per time period
+  // n: number of times the interest is compounded per year
   // t: time period in years
 
   // Simple interest formula: A = P (1 + r * t)
@@ -44,7 +44,7 @@ export const calculateFinalBalance = (
   // r: annual interest rate as a decimal
   // t: time period in years
 
-  const timePeriodInYears = depositPeriod / 12.0;
+  const timePeriodInYears = depositPeriod / 12;
 
   let finalBalance;
   if (
